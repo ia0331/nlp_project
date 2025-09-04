@@ -1,0 +1,8 @@
+{
+  "image_size": 512,
+  "batch_size": 16,
+  "epochs": 12,
+  "lr": 0.0003,
+  "weight_decay": 1e-5,
+  "save_path": "checkpoints/bincls_best.pt"
+}
