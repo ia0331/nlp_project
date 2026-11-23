@@ -162,7 +162,7 @@ def abnormal_findings_en() -> str:
 # -----------------------------
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--in_json", required=True, help="infer_pipeline output JSON")
+    ap.add_argument("--in_json", required=True, help="CXR inference output JSON")
     ap.add_argument("--out_report", required=True, help="path to save FINDINGS .txt")
     ap.add_argument("--provider", choices=["none","openai","bedrock"], default="none")
     ap.add_argument("--openai_model", default="gpt-4o-mini")

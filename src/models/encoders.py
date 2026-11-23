@@ -83,7 +83,7 @@ class GLoRIAEncoder(nn.Module):
     @torch.no_grad()
     def encode_image(self, images: torch.Tensor) -> torch.Tensor:
         """
-        images: [B,3,H,W] (이미 infer_pipeline의 transform 거친 텐서)
+        images: [B,3,H,W] (추론용 이미지 변환을 거친 텐서)
         return: vg [B, D]  (정규화된 projection 공간 임베딩)
         """ 
         g_img, l_img = self.im(images)               # (B,2048), (B,1024,h,w)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Batch runner for:
-1) scripts/infer_pipeline_re.py  -> JSON
+1) scripts/infer_cxr.py          -> JSON
 2) scripts/generate_report.py    -> FINDINGS text
 3) Append 'report' and 'label' to CSV (keeping 'file_name' intact)
 
@@ -9,7 +9,7 @@ Usage example:
 python scripts/batch_infer_and_report.py \
   --csv data/test.csv \
   --model checkpoints/model.pth \
-  --infer_script scripts/infer_pipeline_re.py \
+  --infer_script scripts/infer_cxr.py \
   --report_script scripts/generate_report.py \
   --out_csv data/test_with_reports.csv \
   --work_dir outputs \
@@ -44,7 +44,7 @@ def strip_findings_prefix(text: str) -> str:
 def map_prediction_to_label(pred: str) -> int:
     """
     3-class 매핑: normal=0, pneumonia=1, abnormal=2
-    infer_pipeline_re.py의 out_json["prediction"]가 문자열로 들어온다고 가정.
+    infer_cxr.py의 out_json["prediction"]가 문자열로 들어온다고 가정.
     """
     p = (pred or "").strip().lower()
     if p in ("0", "normal"): return 0
@@ -57,7 +57,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", required=True, help="Input CSV (must contain 'file_name' column)")
     ap.add_argument("--model", required=True, help="3-class model.pth for infer script")
-    ap.add_argument("--infer_script", default="scripts/infer_pipeline_re.py")
+    ap.add_argument("--infer_script", default="scripts/infer_cxr.py")
     ap.add_argument("--report_script", default="scripts/generate_report.py")
     ap.add_argument("--out_csv", required=True, help="Output CSV with added 'report','label' columns")
     ap.add_argument("--work_dir", default="outputs", help="Where to write intermediate json/txt")

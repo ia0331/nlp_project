@@ -4,7 +4,7 @@ Compare SBERT similarity between 'output.csv' and 'test.csv' report texts,
 and additionally run with PubMedBERT to save a second histogram.
 
 Usage:
-python scripts/compare_sbert.py \
+python scripts/evaluate_report_similarity.py \
   --gen_csv data/test_with_reports.csv \
   --ref_csv data/test.csv \
   --out_csv outputs/report_similarity.csv \
